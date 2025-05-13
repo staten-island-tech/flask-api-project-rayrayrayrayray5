@@ -5,7 +5,26 @@
 </head>
 <body>
     <h1>FBI Wanted List</h1>
-    <p>Total wanted individuals: {{ total }}</p>
-    <p>First listed title: {{ title }}</p>
+
+    <form method="get">
+        <input type="text" name="search" placeholder="Search by title" value="{{ search }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <p>Total Results: {{ total }}</p>
+
+    <ul>
+        {% for item in items %}
+            <li><strong>{{ item.title }}</strong> - {{ item['description'] if 'description' in item else 'No description available' }}</li>
+        {% endfor %}
+    </ul>
+
+    <div>
+        {% if page > 1 %}
+            <a href="/?page={{ page - 1 }}&search={{ search }}">Previous</a>
+        {% endif %}
+        <span>Page {{ page }}</span>
+        <a href="/?page={{ page + 1 }}&search={{ search }}">Next</a>
+    </div>
 </body>
 </html>
