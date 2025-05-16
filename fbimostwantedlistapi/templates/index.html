@@ -6,7 +6,6 @@
 <body>
     <h1>FBI Wanted List</h1>
 
-    <!-- Search Forms -->
     <form method="get" action="/">
         <input type="text" name="name" placeholder="Search by name" value="{{ name }}">
         <input type="text" name="crime" placeholder="Search by crime" value="{{ crime }}">
@@ -15,20 +14,18 @@
 
     <hr>
 
-    <!-- Display Results -->
     {% for item in items %}
         <div>
             <h3>{{ item.title }}</h3>
-            <p><strong>Description:</strong> {{ item.description }}</p>
+            <p><strong>Crimes/Date of Crime:</strong> {{ item.description }}</p>
             {% if item.images %}
                 <img src="{{ item.images[0].original }}" alt="Image" width="150" height="150">
             {% endif %}
-            <p><strong>Crimes:</strong> {{ item.caution or "N/A" }}</p>
+            <p><strong>Details:</strong> {{ item.caution | safe or "N/A" }}</p>
         </div>
         <hr>
     {% endfor %}
 
-    <!-- Pagination -->
     {% if total > 20 %}
         <div>
             {% if page > 1 %}

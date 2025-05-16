@@ -21,7 +21,7 @@ def index():
     current_page = data.get('page', current_page)
 
     if crime:
-         items = [item for item in items if crime.lower() in str(item.get('caution', '')).lower()]
+         items = [item for item in items if crime.lower() in str(item.get('description', '')).lower()]
 
     return render_template('index.html', items=items, total=total, page=current_page, name = name, crime = crime)
 if __name__ == '__main__':
