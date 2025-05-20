@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ person.title }} - FBI Wanted List</title>
+</head>
+<body>
+    <h1>{{ person.title }}</h1>
+
+    <div><strong>Aliases:</strong> {{ person.aliases | join(', ') if person.aliases else "N/A" }}</div>
+    <div><strong>Description:</strong> {{ person.description or "N/A" }}</div>
+    <div><strong>Caution:</strong> {{ person.caution or "N/A" }}</div>
+    <div><strong>Date of Birth:</strong> {{ person.date_of_birth or "N/A" }}</div>
+    <div><strong>Gender:</strong> {{ person.gender or "N/A" }}</div>
+    <div><strong>Height:</strong> {{ person.height or "N/A" }}</div>
+    <div><strong>Weight:</strong> {{ person.weight or "N/A" }}</div>
+    <div><strong>Eye Color:</strong> {{ person.eye_color or "N/A" }}</div>
+
+    {% if person.images %}
+        <img src="{{ person.images[0].original }}" alt="Image" width="150" height="150">
+    {% endif %}
+
+    <hr>
+    <a href="{{ request.referrer }}">Back to List</a>
+</body>
+</html>

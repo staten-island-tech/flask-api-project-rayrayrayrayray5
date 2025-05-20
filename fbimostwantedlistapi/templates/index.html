@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FBI Wanted List</title>
 </head>
 <body>
@@ -16,8 +18,8 @@
 
     {% for item in items %}
         <div>
-            <h3>{{ item.title }}</h3>
-            <p><strong>Crimes/Date of Crime:</strong> {{ item.description }}</p>
+            <h3><a href="/wanted/{{ item.uid }}?page={{ page }}">{{ item.title }}</a></h3>
+            <p><strong>Crimes/Time of Disappearance:</strong> {{ item.description }}</p>
             {% if item.images %}
                 <img src="{{ item.images[0].original }}" alt="Image" width="150" height="150">
             {% endif %}
