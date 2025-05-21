@@ -7,8 +7,8 @@
     <h1>{{ person.title }}</h1>
 
     <div><strong>Aliases:</strong> {{ person.aliases | join(', ') if person.aliases else "N/A" }}</div>
-    <div><strong>Description:</strong> {{ person.description or "N/A" }}</div>
-    <div><strong>Caution:</strong> {{ person.caution or "N/A" }}</div>
+    <div><strong>Description:</strong> {{ person.description | safe if person.description else "N/A" }}</div>
+    <div><strong>Details:</strong> {{ person.caution | safe if person.caution else "N/A" }}</div>
     <div><strong>Date of Birth:</strong> {{ person.date_of_birth or "N/A" }}</div>
     <div><strong>Gender:</strong> {{ person.gender or "N/A" }}</div>
     <div><strong>Height:</strong> {{ person.height or "N/A" }}</div>
