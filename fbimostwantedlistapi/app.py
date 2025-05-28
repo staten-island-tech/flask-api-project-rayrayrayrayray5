@@ -21,12 +21,6 @@ def index():
     total = data.get('total', 0)
     current_page = data.get('page', current_page)
 
-    if crime:
-        items = [
-            item for item in items
-            if crime in item.get('description', '').lower()
-        ]
-
     return render_template('index.html', items=items, total=total, page=current_page, name=name, crime=crime)
 
 @app.route('/wanted/<uid>')
