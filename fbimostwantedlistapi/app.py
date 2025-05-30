@@ -8,7 +8,6 @@ app = Flask(__name__)
 def index():
     current_page = request.args.get('page', 1, type=int)
     name = request.args.get('name', '', type=str).strip().lower()
-    crime = request.args.get('crime', '', type=str).strip().lower()
 
     params = {'page': current_page}
     if name:
@@ -21,7 +20,7 @@ def index():
     total = data.get('total', 0)
     current_page = data.get('page', current_page)
 
-    return render_template('index.html', items=items, total=total, page=current_page, name=name, crime=crime)
+    return render_template('index.html', items=items, total=total, page=current_page, name=name)
 
 @app.route('/wanted/<uid>')
 def wanted_detail(uid):
